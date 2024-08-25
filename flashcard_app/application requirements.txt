@@ -1,0 +1,39 @@
+
+## DB structure:
+
+- "User dictionary" : main table where would be id,word, definition,translation column
+- "known words": table connected with the "User dictionary" table, would have the id and the word id wich would be a primary link from the "User dictionary" table.
+- "I don't know": table connected with the "User dictionary" table, would have the id and the word id wich would be a primary link from the "User dictionary" table.
+
+## APP structure:
+
+The main menu would have some sort of counter (it could be a known word counter or how many words are in the user dictionary, or all of that at once) and the possibility to choose from the menu below the screen between:
+
+- adding some new word to user dictionary (Add new words)
+- Learning words from dictionary (Learn sesion)
+- checking user word dictionary (Dictionary)
+    
+    ### Add new words:
+    
+    It would be just a new window and the word in the middle of it below there would be 3 buttons (I know, I don't know, definition)
+    
+    - "I know": would add the word/phrase to the table of "known words" and the parent table "User dictionary".
+    - "I don't know": would add the word/phrase to the table of "I don't know" and the parent table "User dictionary".
+    
+    ### Learn session:
+    
+    *Logic: At the beginning of the learning session, it will fetch some words from your db in a list with dictionaries nested in it (probably 15 words/phrases, with 60% from "not known" table words, and 40% from "known" table words).
+    Example:[{word: {{english: word}, {ukrainian : translation of word}}, ...]
+    It will go from the 0 index word to the 14 index word. If there are not enough words, it will give you a popup informing you that "It is not enough words. Add at least 20 words to your dictionary".
+    
+    - GUI: It would be just a new window with a card in the middle of the screen (with a word on it), two buttons on it, and a counter at the right corner (0/15):
+    - know (or checkmark): will delete the word from the dictionary for this learning session and will add 1 to the counter(1/15)
+    - don't know (cross): will move the word to the last index of the list
+    
+    ### Dictionary:
+    
+    It would be a new window with 3 options("all words" option will be chosen from the start, and it should be visually visible) to use on the upper of the screen:
+    
+    - "known" : it will update the table and will show the words from the "known words" table
+    - "not known": it will update the table and will show the words from the "known words" table
+    - "all words": it will update the table and will show the words from the "User dictionary" table
